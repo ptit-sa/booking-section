@@ -2,6 +2,8 @@ import React from "react";
 import { useId } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { setId } from "../features/booking/orderSlice";
+import { useDispatch } from "react-redux";
 const upcomingEvents = [
   {
     id: 1,
@@ -86,9 +88,10 @@ const previousEvents = [
 
 export default function List() {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const handleNewEvent = () => {
     let id = uuidv4();
+    dispatch(setId(id));
     navigate(`/${id}/booking1`);
   };
   return (

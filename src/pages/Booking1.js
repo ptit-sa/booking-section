@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 import Calendar from "react-calendar";
-
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const STABLES = [
   {
     id: 1,
@@ -49,8 +50,14 @@ const STABLES = [
 export default function Booking1() {
   const [ selectedLocation, setSelectedLocation ] = useState(1);
   const [ selectedDate, setSelectedDate ] = useState(new Date());
+  const navigate = useNavigate();
+  const orderId = useSelector((state) => state.order.id);
+  const handleNext = () => {
+    navigate(`/${orderId}/booking2`);
+  };
+
   return (
-    <div className="flex justify-center flex-col p-3">
+    <div className="min-h-screen flex justify-start flex-col p-3 ">
       <h1 className="text-center text-2xl text-prim font-bold mt-2">
         {" "}
         Location and Date
@@ -96,14 +103,26 @@ export default function Booking1() {
             </div>
           ))}
         </div>
-        <div className="w-full mt-10 flex items-center justify-center">
+        <div className="w-full mt-10 flex flex-col items-center justify-center">
+          <div className="flex flex-row justify-between items-center self-start">
+            <span className="text-lg font-bold">Date</span>
+          </div>
           <Calendar
-            className=""
+            className="flex items-center flex-col gap-3 my-4"
             calendarType="Arabic"
             onChange={setSelectedDate}
             value={selectedDate}
           />
         </div>
+      </div>
+
+      <div className="self-end bottom-5 absolute ">
+        <button
+          className="btn btn-primary text-white w-44 text-lg"
+          onClick={handleNext}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

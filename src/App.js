@@ -10,6 +10,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Booking1 from "./pages/Booking1";
+import Booking2 from "./pages/Booking2";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<List />} />
         <Route path="/:id/booking1" element={<Booking1 />} />
-        
+        <Route path="/:id/booking2" element={<Booking2 />} />
       </Routes>
     </Router>
   );
