@@ -97,29 +97,15 @@ export default function List() {
   return (
     <div className="w-screen h-screen flex flex-col">
       <div className="flex justify-evenly items-center font-bold ">
-        <div className="w-1/2 h-10 bg-prim items-center justify-center ">
+        <div className="w-full h-10 bg-prim items-center justify-center ">
           <h1 className="text-lg h-full text-white text-center flex items-center justify-center">
             Upcoming
           </h1>
         </div>
-        <div className="w-1/2 h-10 bg-prim border-l-2 border-black ">
-          <h1 className="text-lg h-full text-white text-center flex items-center justify-center">
-            Previous
-          </h1>
-        </div>
       </div>
       <div className="w-full h-full flex justify-evenly items-center ">
-        <div className="min-h-full overflow-scroll w-1/2  items-center justify-center pt-4">
+        <div className="min-h-full overflow-scroll w-full  items-center justify-center pt-4">
           {upcomingEvents.map((event) => (
-            <div className=" flex justify-between items-center  border-black">
-              <div className="w-full h-full flex justify-center items-center py-2">
-                <h1 className="w-full text-lg text-center">{event.title}</h1>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="min-h-full overflow-scroll w-1/2   items-center justify-center pt-4 border-l border-black">
-          {previousEvents.map((event) => (
             <div className=" flex justify-between items-center  border-black">
               <div className="w-full h-full flex justify-center items-center py-2">
                 <h1 className="w-full text-lg text-center">{event.title}</h1>
