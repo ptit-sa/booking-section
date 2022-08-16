@@ -64,7 +64,7 @@ export default function Booking1() {
         <div className="  overflow-x-auto flex flex-row mt-4 gap-2  bg-white">
           {STABLES.map((item, index) => (
             <div
-              className="flex items-start rounded-2xl justify-end w-[45%] h-56 md:h-72 bg-base-100 flex-shrink-0 text-white relative z-10"
+              className="flex items-start rounded-2xl justify-end w-[45%] h-56 md:h-72 bg-base-100 flex-shrink-0 text-white relative z-10 cursor-pointer"
               key={index}
               style={{
                 backgroundImage: `url(${item.image}) `,
@@ -72,6 +72,7 @@ export default function Booking1() {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
               }}
+              onClick={() => setSelected(item.id)}
             >
               <div
                 className={`w-full h-full flex flex-col justify-end items-center  ${item.id ===
@@ -87,10 +88,7 @@ export default function Booking1() {
                   </div>
                 </div>
               </div>
-              <div
-                className="bg-black opacity-20 w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20"
-                onClick={() => setSelected(item.id)}
-              />
+              <div className="bg-black opacity-20 w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl" />
             </div>
           ))}
         </div>
