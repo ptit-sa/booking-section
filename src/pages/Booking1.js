@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+
+import Calendar from "react-calendar";
+
 const STABLES = [
   {
     id: 1,
@@ -44,7 +47,8 @@ const STABLES = [
   },
 ];
 export default function Booking1() {
-  const [ selected, setSelected ] = useState(1);
+  const [ selectedLocation, setSelectedLocation ] = useState(1);
+  const [ selectedDate, setSelectedDate ] = useState(new Date());
   return (
     <div className="flex justify-center flex-col p-3">
       <h1 className="text-center text-2xl text-prim font-bold mt-2">
@@ -72,15 +76,15 @@ export default function Booking1() {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
               }}
-              onClick={() => setSelected(item.id)}
+              onClick={() => setSelectedLocation(item.id)}
             >
               <div
-                className={`w-full h-full flex flex-col justify-end items-center  ${item.id ===
-                selected
+                className={`w-full h-full flex flex-col justify-end items-start  ${item.id ===
+                selectedLocation
                   ? ""
                   : "backdrop-grayscale"} `}
               >
-                <div className="flex-col justify-end  z-30 p-2  mb-2">
+                <div className="flex-col justify-end  z-30 p-2  m-2">
                   <h2 className="w-full text-white font-bold">{item.name}</h2>
                   <div className="flex flex-row items-center gap-2">
                     <ion-icon name="location-outline" size={20} />
@@ -91,6 +95,14 @@ export default function Booking1() {
               <div className="bg-black opacity-20 w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl" />
             </div>
           ))}
+        </div>
+        <div className="w-full mt-10 flex items-center justify-center">
+          <Calendar
+            className=""
+            calendarType="Arabic"
+            onChange={setSelectedDate}
+            value={selectedDate}
+          />
         </div>
       </div>
     </div>
