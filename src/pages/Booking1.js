@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { FaCheckCircle } from "react-icons/fa";
 const STABLES = [
   {
     id: 1,
@@ -100,7 +101,14 @@ export default function Booking1() {
                 </div>
               </div>
               <div className="bg-black opacity-20 w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl" />
-              <div className=" w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl" />
+              <div
+                className={` w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl  items-center justify-center ${item.id ===
+                selectedLocation
+                  ? "flex"
+                  : "hidden"} `}
+              >
+                <FaCheckCircle className="text-prim text-5xl" />
+              </div>
             </div>
           ))}
         </div>

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-import Calendar from "react-calendar";
 import { useNavigate } from "react-router-dom";
+import { FaCheckCircle } from "react-icons/fa";
+import { BsFillCheckSquareFill } from "react-icons/bs";
 
 const COACHES = [
   {
@@ -188,6 +189,14 @@ export default function Booking2() {
                 </div>
               </div>
               <div className="bg-black opacity-20 w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl" />
+              <div
+                className={` w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl  items-center justify-center ${item.id ===
+                selectedCoach
+                  ? "flex"
+                  : "hidden"} `}
+              >
+                <FaCheckCircle className="text-prim text-3xl" />
+              </div>
             </div>
           ))}
         </div>
@@ -225,6 +234,15 @@ export default function Booking2() {
                 </div>
               </div>
               <div className="bg-black opacity-20 w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl" />
+              <div
+                className={` w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl  items-center justify-center ${selectedEq.includes(
+                  item.id
+                )
+                  ? "flex"
+                  : "hidden"} `}
+              >
+                <BsFillCheckSquareFill className="text-prim text-3xl" />
+              </div>
             </div>
           ))}
         </div>
@@ -262,6 +280,14 @@ export default function Booking2() {
                 </div>
               </div>
               <div className="bg-black opacity-20 w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl" />
+              <div
+                className={` w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl  items-center justify-center ${item.id ===
+                selectedHorse
+                  ? "flex"
+                  : "hidden"} `}
+              >
+                <FaCheckCircle className="text-prim text-3xl" />
+              </div>
             </div>
           ))}
         </div>
