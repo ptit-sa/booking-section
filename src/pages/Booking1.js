@@ -100,6 +100,7 @@ export default function Booking1() {
                 </div>
               </div>
               <div className="bg-black opacity-20 w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl" />
+              <div className=" w-full h-full top-0 left-0 bottom-0 right-0 absolute z-20 rounded-2xl" />
             </div>
           ))}
         </div>
