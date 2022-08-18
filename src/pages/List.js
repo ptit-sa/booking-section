@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { setId } from "../features/booking/orderSlice";
 import { useDispatch } from "react-redux";
+import { BsCalendar3 } from "react-icons/bs";
 const upcomingEvents = [
   {
     id: 1,
@@ -127,28 +128,35 @@ export default function List() {
         <div className="min-h-full overflow-scroll w-full  items-center justify-center pt-4">
           {focusedTab === "upcoming" ? (
             upcomingEvents.map((event) => (
-              <div className=" flex justify-between items-center  border-black">
-                <div className="w-full h-full flex justify-center items-center py-2">
-                  <h1 className="w-full text-lg text-center">{event.title}</h1>
+              <div className=" flex justify-around items-center  border-black px-2">
+                <div className="w-full h-full flex flex-col items-start py-2 justify-between px-4">
+                  <h1 className="text-lg  font-bold ">{event.title}</h1>
+                  <p>{event.date}</p>
                 </div>
+                <BsCalendar3 className="text-2xl" />
               </div>
             ))
           ) : (
             previousEvents.map((event) => (
-              <div className=" flex justify-between items-center  border-black">
-                <div className="w-full h-full flex justify-center items-center py-2">
-                  <h1 className="w-full text-lg text-center">{event.title}</h1>
+              <div className=" flex justify-around items-center  border-black px-2">
+                <div className="w-full h-full flex flex-col items-start py-2 justify-between px-4">
+                  <h1 className="text-lg  font-bold ">{event.title}</h1>
+                  <p>{event.date}</p>
                 </div>
+                <BsCalendar3 className="text-2xl" />
               </div>
             ))
           )}
         </div>
       </div>
-      <div
-        className="sticky bottom-0 left-50 right-50 w-full bg-prim h-10 text-white flex items-center justify-center text-xl rounded-t-2xl font-bold"
-        onClick={handleNewEvent}
-      >
-        + New
+
+      <div className="p-4 self-end mt-5 w-full  flex justify-center items-center">
+        <button
+          className="btn btn-primary text-white w-44 text-lg"
+          onClick={handleNewEvent}
+        >
+          + New
+        </button>
       </div>
     </div>
   );
