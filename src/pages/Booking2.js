@@ -158,7 +158,6 @@ export default function Booking2() {
       <div className="flex-col mt-2 gap-3">
         <div className="flex flex-row justify-between items-center">
           <span className="text-lg font-bold">Coach</span>
-          <span className="text-prim">View All</span>
         </div>
         <div className="  overflow-x-auto flex flex-row mt-4 gap-2  bg-white">
           {COACHES.map((item, index) => (
@@ -205,7 +204,6 @@ export default function Booking2() {
       <div className="flex-col mt-5 gap-3">
         <div className="flex flex-row justify-between items-center">
           <span className="text-lg font-bold">Equipment</span>
-          <span className="text-prim">View All</span>
         </div>
         <div className="  overflow-x-auto flex flex-row mt-4 gap-2  bg-white">
           {EQUIPS.map((item, index) => (
@@ -252,7 +250,6 @@ export default function Booking2() {
       <div className="flex-col mt-5 gap-3">
         <div className="flex flex-row justify-between items-center">
           <span className="text-lg font-bold">Horse</span>
-          <span className="text-prim">View All</span>
         </div>
         <div className="  overflow-x-auto flex flex-row mt-4 gap-2  bg-white">
           {HORSES.map((item, index) => (

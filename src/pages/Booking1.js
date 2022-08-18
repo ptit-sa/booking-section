@@ -71,7 +71,6 @@ export default function Booking1() {
       <div className="flex-col mt-5 gap-3">
         <div className="flex flex-row justify-between items-center">
           <span className="text-lg font-bold">Location</span>
-          <span className="text-prim">View All</span>
         </div>
         <div className="  overflow-x-auto flex flex-row mt-4 gap-2  bg-white">
           {STABLES.map((item, index) => (
