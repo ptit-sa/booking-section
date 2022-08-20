@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import { BsFillCheckSquareFill } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 const COACHES = [
   {
@@ -135,8 +136,11 @@ export default function Booking2() {
   const [ selectedHorse, setSelectedHorse ] = useState(1);
   const [ selectedEq, setSelectedEq ] = useState([ 1 ]);
   const navigate = useNavigate();
+  const orderId = useSelector((state) => state.order.id);
 
-  const handleNext = () => {};
+  const handleNext = () => {
+    navigate(`/${orderId}/pay`);
+  };
   const updateEq = (id) => {
     //remove eq if it exists in the array or add it if it doesn't
     const newSelectedEq = selectedEq.includes(id)
