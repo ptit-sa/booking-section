@@ -106,7 +106,7 @@ export default function Booking1() {
                   ? "flex"
                   : "hidden"} `}
               >
-                <FaCheckCircle className="text-prim text-5xl" />
+                <FaCheckCircle className="text-white text-3xl" />
               </div>
             </div>
           ))}
