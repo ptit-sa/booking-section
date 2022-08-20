@@ -194,7 +194,7 @@ export default function Booking2() {
                   ? "flex"
                   : "hidden"} `}
               >
-                <FaCheckCircle className="text-prim text-3xl" />
+                <FaCheckCircle className="text-white text-3xl mb-10" />
               </div>
             </div>
           ))}
@@ -239,7 +239,7 @@ export default function Booking2() {
                   ? "flex"
                   : "hidden"} `}
               >
-                <BsFillCheckSquareFill className="text-prim text-3xl" />
+                <BsFillCheckSquareFill className="text-white text-3xl " />
               </div>
             </div>
           ))}
@@ -283,7 +283,7 @@ export default function Booking2() {
                   ? "flex"
                   : "hidden"} `}
               >
-                <FaCheckCircle className="text-prim text-3xl" />
+                <FaCheckCircle className="text-white text-3xl" />
               </div>
             </div>
           ))}
