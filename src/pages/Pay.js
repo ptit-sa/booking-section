@@ -17,40 +17,75 @@ export default function Pay() {
       <div className="flex flex-col gap-4 mt-7 ">
         <h1 className="text-xl font-bold">Booking Details</h1>
         <div className="flex flex-col gap-3 bg-gray-200 p-5 rounded-2xl">
-          <div className="flex flex-row gap-2 items-center flex-wrap">
-            <div className="flex flex-row gap-1">
-              <ImLocation className="text-lg text-prim" />
-              <p className="text-sm font-semibold">location:</p>
+          <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row gap-2 items-center flex-wrap">
+              <div className="flex flex-row gap-1 items-center">
+                <ImLocation className="text-sm text-prim" />
+                <p className="text-xs font-bold">location:</p>
+              </div>
+              <p className="text-sm">Giza Sporting Club, Zamalek</p>
             </div>
-            <p>Giza Sporting Club, Zamalek</p>
+            <p className="text-sm font-bold ">
+              200 <span className="text-2xs ">SAR</span>
+            </p>
           </div>
-          <div className="flex flex-row gap-2 items-center flex-wrap">
-            <div className="flex flex-row gap-1">
-              <BsCalendarWeekFill className="text-lg text-prim" />
-              <p className="text-sm font-semibold">Date:</p>
+          <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row gap-2 items-center flex-wrap">
+              <div className="flex flex-row gap-1 items-center">
+                <BsCalendarWeekFill className="text-sm text-prim" />
+                <p className="text-xs font-bold">Date:</p>
+              </div>
+              <p className="text-sm">2022, Aug 21st, 6:00 pm</p>
             </div>
-            <p>2022, Aug 21st, 6:00 pm</p>
+            <p className="text-sm font-bold ">
+              200 <span className="text-2xs ">SAR</span>
+            </p>
           </div>
-          <div className="flex flex-row gap-2 items-center flex-wrap">
-            <div className="flex flex-row gap-1">
-              <MdOutlineSports className="text-lg text-prim" />
-              <p className="text-sm font-semibold">Coach:</p>
+          <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row gap-2 items-center flex-wrap">
+              <div className="flex flex-row gap-1 items-center">
+                <MdOutlineSports className="text-sm text-prim" />
+                <p className="text-xs font-bold">Coach:</p>
+              </div>
+              <p className="text-sm">Ali Munir</p>
             </div>
-            <p>Ali Munir</p>
+            <p className="text-sm font-bold ">
+              200 <span className="text-2xs ">SAR</span>
+            </p>
           </div>
-          <div className="flex flex-row gap-2 items-center flex-wrap">
-            <div className="flex flex-row gap-1">
-              <FaHorseHead className="text-lg text-prim" />
-              <p className="text-sm font-semibold">Horse:</p>
+          <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row gap-2 items-center flex-wrap">
+              <div className="flex flex-row gap-1 items-center">
+                <FaHorseHead className="text-sm text-prim" />
+                <p className="text-xs font-bold">Horse:</p>
+              </div>
+              <p className="text-sm">Gemanistica</p>
             </div>
-            <p>Gemanistica</p>
+            <p className="text-sm font-bold ">
+              200 <span className="text-2xs ">SAR</span>
+            </p>
           </div>
-          <div className="flex flex-row gap-2 items-center flex-wrap">
-            <div className="flex flex-row gap-1">
-              <MdSportsMotorsports className="text-lg text-prim" />
-              <p className="text-sm font-semibold">Equipment:</p>
+          <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row gap-2 items-center flex-wrap">
+              <div className="flex flex-row gap-1 items-center">
+                <MdSportsMotorsports className="text-sm text-prim" />
+                <p className="text-xs font-bold">Equipment:</p>
+              </div>
+              <p className="text-sm">Helmet, Club</p>
             </div>
-            <p>Helmet, Club</p>
+            <p className="text-sm font-bold ">
+              400 <span className="text-2xs ">SAR</span>
+            </p>
+          </div>
+          <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row gap-2 items-center flex-wrap">
+              <div className="flex flex-row gap-1 items-center">
+                <p className="text-lg font-bold">Total</p>
+              </div>
+            </div>
+            <p className="text-lg font-bold ">
+              400 <span className="text-xs ">SAR</span>
+            </p>
           </div>
         </div>
       </div>
