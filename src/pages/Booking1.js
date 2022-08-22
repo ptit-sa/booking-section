@@ -51,6 +51,9 @@ const STABLES = [
 export default function Booking1() {
   const [ selectedLocation, setSelectedLocation ] = useState(1);
   const [ selectedDate, setSelectedDate ] = useState(new Date());
+  const [ selectedYear, setSelectedYear ] = useState(new Date().getFullYear());
+  const [ selectedMonth, setSelectedMonth ] = useState(new Date().getMonth());
+  const [ selectedDay, setSelectedDay ] = useState(new Date().getDate());
   const navigate = useNavigate();
   const orderId = useSelector((state) => state.order.id);
   const handleNext = () => {
@@ -115,16 +118,60 @@ export default function Booking1() {
           <div className="flex flex-row justify-between items-center self-start">
             <span className="text-lg font-bold">Date</span>
           </div>
-          <Calendar
-            className="flex items-center flex-col gap-3 my-4"
-            calendarType="Arabic"
-            onChange={setSelectedDate}
-            value={selectedDate}
-          />
+          <div className="flex flex-row justify-around items-center w-full ">
+            <select class="select select-bordered  max-w-xs">
+              <option disabled selected>
+                Year
+              </option>
+              <option>2022</option>
+              <option>2023</option>
+            </select>
+            <select class="select select-bordered  max-w-xs">
+              <option disabled selected>
+                Month
+              </option>
+              <option>January</option>
+              <option>February</option>
+              <option>March</option>
+              <option>April</option>
+              <option>May</option>
+              <option>June</option>
+              <option>July</option>
+              <option>August</option>
+              <option>September</option>
+              <option>October</option>
+              <option>November</option>
+              <option>December</option>
+            </select>
+          </div>
+          <div className=" flex flex-row overflow-x-auto w-full mt-4">
+            {Array(31).fill(0).map((item, index) => (
+              <span
+                className={`flex items-center justify-center p-1 w-10 rounded-lg flex-shrink-0 ${index +
+                  1 ===
+                selectedDate.getDate()
+                  ? "bg-primary"
+                  : ""}`}
+                key={index}
+                onClick={() =>
+                  setSelectedDate(
+                    new Date(selectedYear, selectedMonth, index + 1)
+                  )}
+              >
+                <p
+                  className={`${index + 1 === selectedDate.getDate()
+                    ? "text-white"
+                    : "text-black"} text-lg `}
+                >
+                  {index + 1}
+                </p>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="self-end bottom-5 absolute ">
+      <div className="self-end absolute bottom-5 ">
         <button
           className="btn btn-primary text-white w-44 text-lg"
           onClick={handleNext}
