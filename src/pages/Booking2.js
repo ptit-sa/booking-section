@@ -8,42 +8,37 @@ import { useSelector } from "react-redux";
 const COACHES = [
   {
     id: 1,
-    name: "Ali Munir",
-
-    image:
-      "https://images.unsplash.com/photo-1550126417-c0c9e38eba50?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2043&q=80",
+    name: "Ahmed Ali",
+    city: "Riyadh",
+    image: "https://iili.io/r0Lgvn.jpg",
     price: 200,
   },
   {
     id: 2,
-    name: "Ali Munir",
-    city: "Zamalek",
-    image:
-      "https://images.unsplash.com/photo-1623592291219-633d49f67131?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    name: "Arnold Jonathan",
+    city: "Jeddah",
+    image: "https://iili.io/r0Lrps.jpg",
     price: 200,
   },
   {
     id: 3,
-    name: "Ali Munir",
-    city: "Zamalek",
-    image:
-      "https://images.unsplash.com/photo-1625910513390-a9661b6930ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80",
+    name: "Danyal Mailer",
+    city: "Mecca",
+    image: "https://iili.io/r0LUYX.md.jpg",
     price: 200,
   },
   {
     id: 4,
-    name: "Ali Munir",
-    city: "Zamalek",
-    image:
-      "https://images.unsplash.com/photo-1604006852748-903fccbc4019?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    name: "Saeed Mohammed",
+    city: "Riyadh",
+    image: "https://iili.io/r0LS2t.jpg",
     price: 200,
   },
   {
     id: 5,
-    name: "Ali Munir",
-    city: "Zamalek",
-    image:
-      "https://images.unsplash.com/photo-1623592291219-633d49f67131?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+    name: "Yoused Abdallah",
+    city: "Jeddah",
+    image: "https://iili.io/r0L6TG.md.jpg",
     price: 200,
   },
 ];
