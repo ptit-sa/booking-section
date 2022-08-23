@@ -103,29 +103,30 @@ export default function DataPicker() {
       <div className=" flex flex-row overflow-x-auto w-full mt-4">
         {Array(selectedDate.daysInMonth()).fill(0).map((item, index) => (
           <div
-            className={`flex flex-col items-center justify-between py-2 px-3   rounded-lg flex-shrink-0 border-gray-200 border mx-2 ${index ===
+            className={`flex flex-col items-center justify-between py-2 px-3   rounded-lg flex-shrink-0 border-gray-200 border mx-2 ${index +
+              1 ===
             selectedDay
               ? "bg-prim"
               : ""}`}
             key={index}
-            onClick={() => updateSelectedDay(index)}
+            onClick={() => updateSelectedDay(index + 1)}
           >
             <p
-              className={`${index === selectedDay
+              className={`${index + 1 === selectedDay
                 ? "text-white"
                 : "text-black"} text-sm `}
             >
               {MONTHS[selectedMonth]}
             </p>
             <p
-              className={`${index === selectedDay
+              className={`${index + 1 === selectedDay
                 ? "text-white"
                 : "text-black"} text-lg font-bold `}
             >
               {index + 1}
             </p>
             <p
-              className={`${index === selectedDay
+              className={`${index + 1 === selectedDay
                 ? "text-white"
                 : "text-black"} text-xs `}
             >
