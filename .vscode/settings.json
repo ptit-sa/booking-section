@@ -4,5 +4,25 @@
     "Motorsports",
     "Munir",
     "Zamalek"
-  ]
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#77003b",
+    "activityBar.background": "#77003b",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#3f8000",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#77003b",
+    "statusBar.background": "#440022",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#77003b",
+    "statusBarItem.remoteBackground": "#440022",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#440022",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#44002299",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#440022"
 }
