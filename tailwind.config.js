@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       colors: {
         prim: "#3b5b3e",
+        sec: "#cbb186",
       },
     },
   },
