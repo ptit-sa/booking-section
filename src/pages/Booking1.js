@@ -53,7 +53,7 @@ export default function Booking1() {
                   <h2 className="w-full text-white font-bold">{item.name}</h2>
                   <div className="flex flex-row items-center gap-2">
                     <ion-icon name="location-outline" size={20} />
-                    <p className="w-full text-white ">{item.city}</p>
+                    <p className="w-full text-white text-sm ">{item.city}</p>
                   </div>
                 </div>
               </div>

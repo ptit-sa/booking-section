@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import isoWeek from "dayjs/plugin/isoWeek";
 
@@ -48,20 +48,45 @@ export default function DataPicker() {
   const updateSelectedMonth = (month) => {
     let newDate = new Date(selectedYear, month, selectedDay);
     setSelectedMonth(month);
-    setSelectedDate(dayjs(newDate));
+    // setSelectedDate(dayjs(newDate));
   };
   const updateSelectedYear = (year) => {
     let newDate = new Date(year, selectedMonth, selectedDay);
     setSelectedYear(year);
-    setSelectedDate(dayjs(newDate));
+    // setSelectedDate(dayjs(newDate));
   };
 
   console.log({
-    slectedDate: selectedDate.format("DD-MM-YYYY"),
+    now: {
+      month: now.month(),
+      day: now.date(),
+    },
+    selectedDate: selectedDate.format("DD-MM-YYYY"),
     selectedYear,
     selectedMonth,
     selectedDay,
   });
+
+  useEffect(
+    () => {
+      let selected = document.getElementById(`day${now.date()}${now.month()}`);
+      let firstDay = document.getElementById(`day${1}${selectedMonth}`);
+      if (selected) {
+        selected.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "center",
+        });
+      } else {
+        firstDay.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "center",
+        });
+      }
+    },
+    [ selectedMonth ]
+  );
 
   return (
     <div className="w-full mt-10 flex flex-col items-center justify-center">
@@ -70,22 +95,20 @@ export default function DataPicker() {
       </div>
       <div className="flex flex-row justify-around items-center w-full mt-4 ">
         <select
-          class="select select-bordered  max-w-xs"
+          className="select select-bordered  max-w-xs"
           onChange={(e) => updateSelectedYear(e.target.value)}
+          defaultValue={selectedYear}
         >
-          <option disabled selected>
-            Year
-          </option>
+          <option disabled>Year</option>
           <option value={2022}>2022</option>
           <option value={2023}>2023</option>
         </select>
         <select
           class="select select-bordered  max-w-xs"
           onChange={(e) => updateSelectedMonth(e.target.value)}
+          defaultValue={selectedMonth}
         >
-          <option disabled selected>
-            Month
-          </option>
+          <option disabled>Month</option>
           <option value={0}>January</option>
           <option value={1}>February</option>
           <option value={2}>March</option>
@@ -103,32 +126,51 @@ export default function DataPicker() {
       <div className=" flex flex-row overflow-x-auto w-full mt-4">
         {Array(selectedDate.daysInMonth()).fill(0).map((item, index) => (
           <div
-            className={`flex flex-col items-center justify-between py-2 px-3   rounded-lg flex-shrink-0 border-gray-200 border mx-2 ${index +
-              1 ===
-            selectedDay
+            className={`flex flex-col items-center justify-between py-2 px-3   rounded-lg flex-shrink-0 border-gray-200 border mx-2 ${dayjs(
+              new Date(selectedYear, selectedMonth, index + 1)
+            ).isSame(selectedDate, "day")
               ? "bg-prim"
-              : ""}`}
+              : ""}               ${dayjs(
+              new Date(selectedYear, selectedMonth, index + 2)
+            ).isBefore(now)
+              ? "bg-gray-200 text-gray-400"
+              : "text-black"}     `}
             key={index}
-            onClick={() => updateSelectedDay(index + 1)}
+            id={`day${index}${selectedMonth}`}
+            onClick={() => {
+              if (
+                !dayjs(
+                  new Date(selectedYear, selectedMonth, index + 2)
+                ).isBefore(now)
+              ) {
+                updateSelectedDay(index + 1);
+              }
+            }}
           >
             <p
-              className={`${index + 1 === selectedDay
+              className={`${dayjs(
+                new Date(selectedYear, selectedMonth, index + 1)
+              ).isSame(selectedDate, "day")
                 ? "text-white"
-                : "text-black"} text-sm `}
+                : ""} text-sm `}
             >
               {MONTHS[selectedMonth]}
             </p>
             <p
-              className={`${index + 1 === selectedDay
+              className={`${dayjs(
+                new Date(selectedYear, selectedMonth, index + 1)
+              ).isSame(selectedDate, "day")
                 ? "text-white"
-                : "text-black"} text-lg font-bold `}
+                : ""} text-lg font-bold `}
             >
               {index + 1}
             </p>
             <p
-              className={`${index + 1 === selectedDay
+              className={`${dayjs(
+                new Date(selectedYear, selectedMonth, index + 1)
+              ).isSame(selectedDate, "day")
                 ? "text-white"
-                : "text-black"} text-xs `}
+                : ""} text-xs `}
             >
               {DAYS[
                 dayjs(
