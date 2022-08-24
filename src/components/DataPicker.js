@@ -128,6 +128,20 @@ export default function DataPicker() {
           <option value={11}>December</option>
         </select>
       </div>
+      <div className="flex flex-row items-center justify-evenly w-full mt-6">
+        <div className="flex flex-row items-center gap-2 text-sm">
+          <span className="w-4 h-4 bg-prim rounded" />
+          available
+        </div>
+        <div className="flex flex-row items-center gap-2 text-sm">
+          <span className="w-4 h-4 bg-orange-400 rounded" />
+          mostly booked
+        </div>
+        <div className="flex flex-row items-center gap-2 text-sm">
+          <span className="w-4 h-4 bg-gray-600 rounded" />
+          fully booked
+        </div>
+      </div>
       <div className=" flex flex-row overflow-x-auto w-full mt-4">
         {Array(selectedDate.daysInMonth()).fill(0).map((item, index) => (
           <div
@@ -186,10 +200,10 @@ export default function DataPicker() {
           </div>
         ))}
       </div>
-      <div className="flex flex-col w-full my-8 justify-start items-center gap-2 h-40 overflow-y-auto">
+      <div className="flex flex-col w-max my-8 justify-start items-center gap-2 h-40  md:h-80 overflow-y-auto">
         {Array(15).fill(0).map((hour, index) => {
           return (
-            <div className="w-8/12 max-w-72 py-2 text-center rounded-xl border text-prim font-bold border-prim ">
+            <div className="min-w-[80vw] max-w-72 py-2 text-center rounded-xl border text-prim font-bold border-prim ">
               {index + 9 >= 12 ? (
                 `${index + 9 - 12 || 12} PM`
               ) : (
