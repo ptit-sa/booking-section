@@ -72,7 +72,7 @@ export default function Booking1() {
         <DataPicker />
       </div>
 
-      <div className="self-end absolute bottom-5 ">
+      <div className="self-end  ">
         <button
           className="btn btn-primary text-white w-44 text-lg"
           onClick={handleNext}

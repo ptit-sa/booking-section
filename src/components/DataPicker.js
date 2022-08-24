@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import isoWeek from "dayjs/plugin/isoWeek";
 
@@ -40,18 +40,22 @@ export default function DataPicker() {
   const [ selectedMonth, setSelectedMonth ] = useState(now.month());
   const [ selectedDay, setSelectedDay ] = useState(now.date());
 
-  const updateSelectedDay = (day) => {
-    let newDate = new Date(selectedYear, selectedMonth, day);
-    setSelectedDay(day);
-    setSelectedDate(dayjs(newDate));
-  };
+  const updateSelectedDay = useCallback(
+    (day) => {
+      let newDate = new Date(selectedYear, selectedMonth, day);
+      setSelectedDay(day);
+      setSelectedDate(dayjs(newDate));
+    },
+    [ selectedMonth, selectedYear ]
+  );
+
   const updateSelectedMonth = (month) => {
-    let newDate = new Date(selectedYear, month, selectedDay);
+    // let newDate = new Date(selectedYear, month, selectedDay);
     setSelectedMonth(month);
     // setSelectedDate(dayjs(newDate));
   };
   const updateSelectedYear = (year) => {
-    let newDate = new Date(year, selectedMonth, selectedDay);
+    // let newDate = new Date(year, selectedMonth, selectedDay);
     setSelectedYear(year);
     // setSelectedDate(dayjs(newDate));
   };
@@ -60,6 +64,7 @@ export default function DataPicker() {
     now: {
       month: now.month(),
       day: now.date(),
+      hour: now.hour(),
     },
     selectedDate: selectedDate.format("DD-MM-YYYY"),
     selectedYear,
@@ -180,6 +185,19 @@ export default function DataPicker() {
             </p>
           </div>
         ))}
+      </div>
+      <div className="flex flex-col w-full my-8 justify-start items-center gap-2 h-40 overflow-y-auto">
+        {Array(15).fill(0).map((hour, index) => {
+          return (
+            <div className="w-8/12 max-w-72 py-2 text-center rounded-xl border text-prim font-bold border-prim ">
+              {index + 9 >= 12 ? (
+                `${index + 9 - 12 || 12} PM`
+              ) : (
+                `${index + 9} AM`
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
