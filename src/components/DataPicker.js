@@ -145,7 +145,7 @@ export default function DataPicker() {
       <div className=" flex flex-row overflow-x-auto w-full mt-4">
         {Array(selectedDate.daysInMonth()).fill(0).map((item, index) => (
           <div
-            className={`flex flex-col items-center justify-between py-2 px-3   rounded-lg flex-shrink-0 border-gray-200 border mx-2 ${dayjs(
+            className={`transition ease-in-out flex flex-col items-center justify-between py-2 px-3   rounded-lg flex-shrink-0 border-gray-200 border mx-2 ${dayjs(
               new Date(selectedYear, selectedMonth, index + 1)
             ).isSame(selectedDate, "day")
               ? "bg-prim"
@@ -203,13 +203,13 @@ export default function DataPicker() {
       <div className="flex flex-col w-max my-8 justify-start items-center gap-2 h-40  md:h-80 overflow-y-auto">
         {Array(15).fill(0).map((hour, index) => {
           return (
-            <div className="min-w-[80vw] max-w-72 py-2 text-center rounded-xl border text-prim font-bold border-prim ">
+            <button className="min-w-[80vw] max-w-72 py-2 text-center rounded-xl border text-prim font-bold border-prim active:bg-prim active:text-white ease-in-out  transition">
               {index + 9 >= 12 ? (
                 `${index + 9 - 12 || 12} PM`
               ) : (
                 `${index + 9} AM`
               )}
-            </div>
+            </button>
           );
         })}
       </div>
