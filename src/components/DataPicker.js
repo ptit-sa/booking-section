@@ -39,11 +39,21 @@ export default function DataPicker() {
   const [ selectedYear, setSelectedYear ] = useState(now.year());
   const [ selectedMonth, setSelectedMonth ] = useState(now.month());
   const [ selectedDay, setSelectedDay ] = useState(now.date());
+  const [ selectedHour, setSelectedHour ] = useState(now.hour());
 
   const updateSelectedDay = useCallback(
     (day) => {
-      let newDate = new Date(selectedYear, selectedMonth, day);
+      let newDate = new Date(selectedYear, selectedMonth, day, selectedHour);
       setSelectedDay(day);
+      setSelectedDate(dayjs(newDate));
+    },
+    [ selectedMonth, selectedYear ]
+  );
+
+  const updateSelectedHour = useCallback(
+    (hour) => {
+      let newDate = new Date(selectedYear, selectedMonth, selectedDay, hour);
+      setSelectedHour(hour);
       setSelectedDate(dayjs(newDate));
     },
     [ selectedMonth, selectedYear ]
@@ -171,15 +181,19 @@ export default function DataPicker() {
       >
         {Array(selectedDate.daysInMonth()).fill(0).map((item, index) => (
           <div
-            className={`transition ease-in-out flex flex-col items-center justify-between py-2 px-3   rounded-lg flex-shrink-0 border-gray-200 border mx-2 ${dayjs(
-              new Date(selectedYear, selectedMonth, index + 1)
-            ).isSame(selectedDate, "day")
-              ? "bg-prim"
-              : ""}               ${dayjs(
-              new Date(selectedYear, selectedMonth, index + 2)
-            ).isBefore(now)
-              ? "bg-gray-200 text-gray-400"
-              : "text-black"}     `}
+            className={`transition ease-in-out flex flex-col items-center justify-between py-2 px-3   rounded-lg flex-shrink-0 border-gray-200 border mx-2
+              ${dayjs(new Date(selectedYear, selectedMonth, index + 1)).isSame(
+                selectedDate,
+                "day"
+              )
+                ? "bg-prim"
+                : ""}      
+              ${dayjs(
+                new Date(selectedYear, selectedMonth, index + 2)
+              ).isBefore(now)
+                ? "bg-gray-200 text-gray-400"
+                : "text-black"} 
+            `}
             key={index}
             id={`day${index}${selectedMonth}`}
             onClick={() => {
@@ -234,14 +248,27 @@ export default function DataPicker() {
           return (
             <button
               id={`hour${index + 9}${selectedDay}`}
-              className={`min-w-[80vw] max-w-72 py-2 text-center rounded-xl border  font-bold   ease-in-out  transition ${dayjs(
-                new Date(selectedYear, selectedMonth, selectedDay, index + 9)
-              ).isBefore(now)
-                ? "bg-gray-200 text-gray-400"
-                : "text-prim active:bg-prim active:text-white border-prim"}   `}
+              className={`min-w-[80vw] max-w-72 py-2 text-center rounded-xl border font-bold ease-in-out  transition
+                ${dayjs(
+                  new Date(selectedYear, selectedMonth, selectedDay, index + 9)
+                ).isBefore(now)
+                  ? "bg-gray-200 text-gray-400"
+                  : "text-prim active:bg-prim active:text-white border-prim"}
+                  ${dayjs(
+                    new Date(
+                      selectedYear,
+                      selectedMonth,
+                      selectedDay,
+                      index + 9
+                    )
+                  ).isSame(selectedDate, "hour")
+                    ? "bg-prim text-white"
+                    : ""} 
+                `}
               disabled={dayjs(
                 new Date(selectedYear, selectedMonth, selectedDay, index + 9)
               ).isBefore(now)}
+              onClick={() => updateSelectedHour(index + 9)}
             >
               {index + 9 >= 12 ? (
                 `${index + 9 - 12 || 12} PM`
