@@ -74,23 +74,46 @@ export default function DataPicker() {
 
   useEffect(
     () => {
+      // let firstDay = document.getElementById(`day${1}${selectedMonth}`);
       let selected = document.getElementById(`day${now.date()}${now.month()}`);
-      let firstDay = document.getElementById(`day${1}${selectedMonth}`);
+      let positionInsideDayPicker;
+      const dayPicker = document.getElementById("dayPicker");
       if (selected) {
-        selected.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-          inline: "center",
-        });
+        positionInsideDayPicker = selected.offsetLeft;
+        console.log(
+          "🚀 ~ file: DataPicker.js ~ line 83 ~ DataPicker ~ positionInsideDayPicker",
+          positionInsideDayPicker
+        );
+        dayPicker.scrollLeft = positionInsideDayPicker - 230;
       } else {
-        firstDay.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-          inline: "center",
-        });
+        dayPicker.scrollLeft = 0;
       }
     },
     [ selectedMonth ]
+  );
+  useEffect(
+    () => {
+      let firstHour = document.getElementById(`hour${9}${selectedDay}`);
+      let selected = document.getElementById(`hour${now.hour()}${now.date()}`);
+      let positionInsideHourPicker;
+      const hourPicker = document.getElementById("hour-picker");
+      if (selected) {
+        positionInsideHourPicker = selected.offsetTop;
+        console.log(
+          "🚀 ~ file: DataPicker.js ~ line 83 ~ DataPicker ~ positionInsideHourPicker",
+          positionInsideHourPicker
+        );
+        // selected.scrollIntoView({
+        //   behavior: "smooth",
+        //   block: "center",
+        //   inline: "center",
+        // });
+        hourPicker.scrollTop = positionInsideHourPicker - 700;
+      } else {
+        hourPicker.scrollTop = 0;
+      }
+    },
+    [ selectedDay ]
   );
 
   return (
@@ -142,7 +165,10 @@ export default function DataPicker() {
           fully booked
         </div>
       </div>
-      <div className=" flex flex-row overflow-x-auto w-full mt-4">
+      <div
+        className=" flex flex-row overflow-x-auto w-full mt-4"
+        id="dayPicker"
+      >
         {Array(selectedDate.daysInMonth()).fill(0).map((item, index) => (
           <div
             className={`transition ease-in-out flex flex-col items-center justify-between py-2 px-3   rounded-lg flex-shrink-0 border-gray-200 border mx-2 ${dayjs(
@@ -200,10 +226,23 @@ export default function DataPicker() {
           </div>
         ))}
       </div>
-      <div className="flex flex-col w-max my-8 justify-start items-center gap-2 h-40  md:h-80 overflow-y-auto">
+      <div
+        className="flex flex-col w-max my-8 justify-start items-center gap-2 h-40  md:h-80 overflow-y-auto"
+        id="hour-picker"
+      >
         {Array(15).fill(0).map((hour, index) => {
           return (
-            <button className="min-w-[80vw] max-w-72 py-2 text-center rounded-xl border text-prim font-bold border-prim active:bg-prim active:text-white ease-in-out  transition">
+            <button
+              id={`hour${index + 9}${selectedDay}`}
+              className={`min-w-[80vw] max-w-72 py-2 text-center rounded-xl border  font-bold   ease-in-out  transition ${dayjs(
+                new Date(selectedYear, selectedMonth, selectedDay, index + 9)
+              ).isBefore(now)
+                ? "bg-gray-200 text-gray-400"
+                : "text-prim active:bg-prim active:text-white border-prim"}   `}
+              disabled={dayjs(
+                new Date(selectedYear, selectedMonth, selectedDay, index + 9)
+              ).isBefore(now)}
+            >
               {index + 9 >= 12 ? (
                 `${index + 9 - 12 || 12} PM`
               ) : (

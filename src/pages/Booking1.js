@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 
-import Calendar from "react-calendar";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaCheckCircle } from "react-icons/fa";
 import DataPicker from "../components/DataPicker";
 import { STABLES } from "../api/Booking1_data";
+import { setLocation } from "../features/booking/orderSlice";
 export default function Booking1() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [ selectedLocation, setSelectedLocation ] = useState(1);
 
-  const navigate = useNavigate();
   const orderId = useSelector((state) => state.order.id);
   const handleNext = () => {
     navigate(`/${orderId}/booking2`);
@@ -41,7 +42,10 @@ export default function Booking1() {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
               }}
-              onClick={() => setSelectedLocation(item.id)}
+              onClick={() => {
+                dispatch(setLocation(item));
+                setSelectedLocation(item.id);
+              }}
             >
               <div
                 className={`w-full h-full flex flex-col justify-end items-start  ${item.id ===
