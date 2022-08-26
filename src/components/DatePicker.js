@@ -4,7 +4,7 @@ import isoWeek from "dayjs/plugin/isoWeek";
 
 dayjs.extend(isoWeek);
 
-export default function DataPicker() {
+export default function DatePicker() {
   const DAYS = useMemo(
     () => [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
     []
@@ -28,12 +28,13 @@ export default function DataPicker() {
   );
   const now = dayjs();
   console.log(
-    "🚀 ~ file: DataPicker.js ~ line 6 ~ DataPicker ~ now",
+    "🚀 ~ file: DatePicker.js ~ line 6 ~ DatePicker ~ now",
     now.format()
   );
+
   const [ selectedDate, setSelectedDate ] = useState(now);
   console.log(
-    "🚀 ~ file: DataPicker.js ~ line 11 ~ DataPicker ~ selectedDate",
+    "🚀 ~ file: DatePicker.js ~ line 11 ~ DatePicker ~ selectedDate",
     selectedDate
   );
   const [ selectedYear, setSelectedYear ] = useState(now.year());
@@ -41,23 +42,37 @@ export default function DataPicker() {
   const [ selectedDay, setSelectedDay ] = useState(now.date());
   const [ selectedHour, setSelectedHour ] = useState(now.hour());
 
-  const updateSelectedDay = useCallback(
-    (day) => {
-      let newDate = new Date(selectedYear, selectedMonth, day, selectedHour);
-      setSelectedDay(day);
-      setSelectedDate(dayjs(newDate));
-    },
-    [ selectedMonth, selectedYear ]
-  );
+  const updateSelectedDay = useCallback((day) => {
+    // console.log("UPDATED DAY", {
+    //   selectedYear,
+    //   selectedMonth,
+    //   selectedDay,
+    //   day,
+    //   selectedHour,
+    //   newDate: new Date(
+    //     selectedYear,
+    //     selectedMonth,
+    //     selectedDay,
+    //     selectedHour
+    //   ),
+    // });
+    // let newDate = new Date(selectedYear, selectedMonth, day);
+    setSelectedDay(day);
+    // setSelectedDate(dayjs(newDate));
+  }, []);
 
-  const updateSelectedHour = useCallback(
-    (hour) => {
-      let newDate = new Date(selectedYear, selectedMonth, selectedDay, hour);
-      setSelectedHour(hour);
-      setSelectedDate(dayjs(newDate));
-    },
-    [ selectedMonth, selectedYear ]
-  );
+  const updateSelectedHour = useCallback((hour) => {
+    // console.log("UPDATED HOUR", {
+    //   selectedYear,
+    //   selectedMonth,
+    //   selectedDay,
+    //   hour,
+    //   newDate: new Date(selectedYear, selectedMonth, selectedDay, hour),
+    // });
+    // let newDate = new Date(selectedYear, selectedMonth, selectedDay, hour);
+    setSelectedHour(hour);
+    // setSelectedDate(dayjs(newDate));
+  }, []);
 
   const updateSelectedMonth = (month) => {
     // let newDate = new Date(selectedYear, month, selectedDay);
@@ -70,18 +85,6 @@ export default function DataPicker() {
     // setSelectedDate(dayjs(newDate));
   };
 
-  console.log({
-    now: {
-      month: now.month(),
-      day: now.date(),
-      hour: now.hour(),
-    },
-    selectedDate: selectedDate.format("DD-MM-YYYY"),
-    selectedYear,
-    selectedMonth,
-    selectedDay,
-  });
-
   useEffect(
     () => {
       // let firstDay = document.getElementById(`day${1}${selectedMonth}`);
@@ -91,7 +94,7 @@ export default function DataPicker() {
       if (selected) {
         positionInsideDayPicker = selected.offsetLeft;
         console.log(
-          "🚀 ~ file: DataPicker.js ~ line 83 ~ DataPicker ~ positionInsideDayPicker",
+          "🚀 ~ file: DatePicker.js ~ line 83 ~ DatePicker ~ positionInsideDayPicker",
           positionInsideDayPicker
         );
         dayPicker.scrollLeft = positionInsideDayPicker - 230;
@@ -110,7 +113,7 @@ export default function DataPicker() {
       if (selected) {
         positionInsideHourPicker = selected.offsetTop;
         console.log(
-          "🚀 ~ file: DataPicker.js ~ line 83 ~ DataPicker ~ positionInsideHourPicker",
+          "🚀 ~ file: DatePicker.js ~ line 83 ~ DatePicker ~ positionInsideHourPicker",
           positionInsideHourPicker
         );
         // selected.scrollIntoView({
@@ -124,6 +127,43 @@ export default function DataPicker() {
       }
     },
     [ selectedDay ]
+  );
+  useEffect(
+    () => {
+      let newDate = selectedDate.date(selectedDay);
+      setSelectedDate(newDate);
+    },
+    [ selectedDay ]
+  );
+  useEffect(
+    () => {
+      let newDate = selectedDate.hour(selectedHour);
+      setSelectedDate(newDate);
+    },
+    [ selectedHour ]
+  );
+  useEffect(
+    () => {
+      let newDate = selectedDate.month(selectedMonth);
+      setSelectedDate(newDate);
+    },
+    [ selectedMonth ]
+  );
+  useEffect(
+    () => {
+      let newDate = selectedDate.year(selectedYear);
+      setSelectedDate(newDate);
+    },
+    [ selectedYear ]
+  );
+  useEffect(
+    () => {
+      console.log(
+        "selectedDate changed",
+        selectedDate.format("DD-MM-YYYY__ha")
+      );
+    },
+    [ selectedDate ]
   );
 
   return (
@@ -179,7 +219,7 @@ export default function DataPicker() {
         className=" flex flex-row overflow-x-auto w-full mt-4"
         id="dayPicker"
       >
-        {Array(selectedDate.daysInMonth()).fill(0).map((item, index) => (
+        {Array(selectedDate.daysInMonth() || 30).fill(0).map((item, index) => (
           <div
             className={`transition ease-in-out flex flex-col items-center justify-between py-2 px-3   rounded-lg flex-shrink-0 border-gray-200 border mx-2
               ${dayjs(new Date(selectedYear, selectedMonth, index + 1)).isSame(
@@ -253,7 +293,7 @@ export default function DataPicker() {
                   new Date(selectedYear, selectedMonth, selectedDay, index + 9)
                 ).isBefore(now)
                   ? "bg-gray-200 text-gray-400"
-                  : "text-prim active:bg-prim active:text-white border-prim"}
+                  : " active:bg-prim active:text-white border-prim"}
                   ${dayjs(
                     new Date(
                       selectedYear,

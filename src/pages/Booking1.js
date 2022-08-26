@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaCheckCircle } from "react-icons/fa";
-import DataPicker from "../components/DataPicker";
+import DatePicker from "../components/DatePicker";
 import { STABLES } from "../api/Booking1_data";
 import { setLocation } from "../features/booking/orderSlice";
 export default function Booking1() {
@@ -73,7 +73,7 @@ export default function Booking1() {
             </div>
           ))}
         </div>
-        <DataPicker />
+        <DatePicker />
       </div>
 
       <div className="self-end  ">
