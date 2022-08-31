@@ -7,11 +7,21 @@ import { FaHorseHead } from "react-icons/fa";
 import { BsApple } from "react-icons/bs";
 import { BsCreditCard2Back } from "react-icons/bs";
 import { IoIosCash } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 import ApplePay from "../assets/pay_apple_pay.png";
+import { useNavigate } from "react-router-dom";
 export default function Pay() {
+  const navigate = useNavigate();
   return (
-    <div className="min-h-screen flex justify-start flex-col p-3 ">
-      <h1 className="text-center text-2xl text-prim font-bold mt-2">Payment</h1>
+    <div className="min-h-screen flex justify-start flex-col p-3 relative ">
+      <div className="w-full  fixed top-0 left-0 z-10 flex justify-center items-center flex-row p-4 bg-white ">
+        <button className="p-2 self-start " onClick={() => navigate(-1)}>
+          <IoIosArrowBack className="text-2xl" />
+        </button>
+        <h1 className="text-center text-2xl text-prim font-bold  flex-1 pe-5">
+          Payment
+        </h1>
+      </div>
       <ul className="steps mt-4 text-white ">
         <li className="step  step-primary" />
         <li className="step step-primary" />
@@ -145,12 +155,12 @@ export default function Pay() {
         </div>
       </div>
       <input type="checkbox" id="TCModal" className="modal-toggle" />
-      <div className="modal">
+      <div className="modal ">
         <div className="modal-box">
           <h3 className="font-bold text-lg text-center mb-4">
             Terms and Conditions
           </h3>
-          <div className="overflow-y-auto h-[300px]">
+          <div className="overflow-y-auto h-[300px] text-justify">
             Introduction These Website Standard Terms and Conditions written on
             this webpage shall manage your use of our website, Webiste Name
             accessible at Website.com. These Terms will be applied fully and

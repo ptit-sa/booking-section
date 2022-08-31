@@ -14,7 +14,7 @@ export default function ReviewModal(props) {
             ✕
           </label>
           <h3 className="text-lg font-bold">Coach Review</h3>
-          <p className="py-4">
+          <p className="py-4 text-justify">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo
             distinctio molestias nobis amet vel consequatur dolore cupiditate
             magni eveniet dicta!{" "}

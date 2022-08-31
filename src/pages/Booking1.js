@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaCheckCircle } from "react-icons/fa";
+import { IoIosArrowBack } from "react-icons/io";
 import DatePicker from "../components/DatePicker";
 import { STABLES } from "../api/Booking1_data";
 import { setLocation } from "../features/booking/orderSlice";
@@ -17,12 +18,16 @@ export default function Booking1() {
   };
 
   return (
-    <div className="min-h-screen flex justify-start flex-col p-3 ">
-      <h1 className="text-center text-2xl text-prim font-bold mt-2">
-        {" "}
-        Location and Date
-      </h1>
-      <ul class="steps mt-4">
+    <div className="min-h-screen flex justify-start flex-col p-3 relative ">
+      <div className="w-full  fixed top-0 left-0 z-10 flex justify-center items-center flex-row p-4 bg-white ">
+        <button className="p-2 self-start " onClick={() => navigate(-1)}>
+          <IoIosArrowBack className="text-2xl" />
+        </button>
+        <h1 className="text-center text-2xl text-prim font-bold  flex-1 pe-5">
+          Location and Date
+        </h1>
+      </div>
+      <ul class="steps mt-14">
         <li class="step step-primary" />
         <li class="step " />
         <li class="step" />
@@ -76,9 +81,9 @@ export default function Booking1() {
         <DatePicker />
       </div>
 
-      <div className="self-end  ">
+      <div className=" ">
         <button
-          className="btn btn-primary text-white w-44 text-lg"
+          className="btn btn-primary text-white w-full text-lg"
           onClick={handleNext}
         >
           Next

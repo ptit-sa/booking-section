@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import { BsFillCheckSquareFill } from "react-icons/bs";
+import { IoIosArrowBack } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { COACHES, HORSES, EQUIPS } from "../api/Booking2_data";
 export default function Booking2() {
@@ -23,11 +24,15 @@ export default function Booking2() {
     setSelectedEq(newSelectedEq);
   };
   return (
-    <div className="min-h-screen flex justify-start flex-col p-3 ">
-      <h1 className="text-center text-2xl text-prim font-bold ">
-        {" "}
-        Specifications
-      </h1>
+    <div className="min-h-screen flex justify-start flex-col p-3 relative ">
+      <div className="w-full  fixed top-0 left-0 z-10 flex justify-center items-center flex-row p-4 bg-white ">
+        <button className="p-2 self-start " onClick={() => navigate(-1)}>
+          <IoIosArrowBack className="text-2xl" />
+        </button>
+        <h1 className="text-center text-2xl text-prim font-bold  flex-1 pe-5">
+          Specifications
+        </h1>
+      </div>
       <ul class="steps mt-1">
         <li class="step step-primary" />
         <li class="step step-primary" />
@@ -168,9 +173,9 @@ export default function Booking2() {
         </div>
       </div>
 
-      <div className="self-end mt-5">
+      <div className="mt-5">
         <button
-          className="btn btn-primary text-white w-44 text-lg"
+          className="btn btn-primary text-white w-full  text-lg"
           onClick={handleNext}
         >
           Next
