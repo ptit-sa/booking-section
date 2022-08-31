@@ -93,11 +93,31 @@ export default function Pay() {
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row gap-2 items-center flex-wrap">
               <div className="flex flex-row gap-1 items-center">
+                <p className="text-sm font-bold">Sub Total</p>
+              </div>
+            </div>
+            <p className="text-sm font-bold ">
+              1200 <span className="text-2xs font-thin ">SAR</span>
+            </p>
+          </div>
+          <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row gap-2 items-center flex-wrap">
+              <div className="flex flex-row gap-1 items-center">
+                <p className="text-sm font-bold">VAT (14%)</p>
+              </div>
+            </div>
+            <p className="text-sm font-bold ">
+              168 <span className="text-2xs font-thin ">SAR</span>
+            </p>
+          </div>
+          <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row gap-2 items-center flex-wrap">
+              <div className="flex flex-row gap-1 items-center">
                 <p className="text-lg font-bold">Total</p>
               </div>
             </div>
             <p className="text-lg font-bold ">
-              1200 <span className="text-2xs font-thin ">SAR</span>
+              1368 <span className="text-2xs font-thin ">SAR</span>
             </p>
           </div>
         </div>
@@ -135,7 +155,7 @@ export default function Pay() {
             <p className="font-semibold text-xl">Total</p>
           </div>
           <p className="text-lg font-bold ">
-            1200 <span className="text-2xs font-thin ">SAR</span>
+            1368 <span className="text-2xs font-thin ">SAR</span>
           </p>
         </div>
         <label className="flex flex-row items center gap-2">
